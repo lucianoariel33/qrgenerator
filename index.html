@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de QR</title>
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 class="title">Generador de Códigos QR</h1>
+            <!-- Botón de información -->
+            <button class="info-button" onclick="openModal()">
+                <i class="material-icons">info</i>
+            </button>
+            <div class="input-container">
+                <input type="text" id="url-input" placeholder="Ingresa la URL aquí">
+            </div>
+            <button class="generate-button" onclick="generateQR()">
+                <span>Generar QR</span>
+                <i class="material-icons">qr_code</i>
+            </button>
+            <div id="qr-container" class="qr-container">
+                <h2 id="qr-title"></h2>
+                <div id="qr-code"></div>
+                <!-- Botón de descarga -->
+                <button id="download-button" class="download-button" onclick="downloadQR()">
+                    <span>Descargar QR</span>
+                    <i class="material-icons">download</i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de información -->
+    <div id="info-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>Información sobre los códigos QR</h2>
+            <p>
+                Los códigos QR generados por esta herramienta no tienen una fecha de expiración.
+                Sin embargo, su utilidad depende de la validez de la URL que contienen. Si la URL
+                deja de funcionar, el código QR ya no será útil.
+            </p>
+            <p>
+                <strong>Técnica utilizada:</strong> Este generador de QR utiliza la librería
+                <a href="https://davidshimjs.github.io/qrcodejs/" target="_blank">QRCode.js</a>,
+                que genera códigos QR estáticos en formato PNG directamente en el navegador.
+            </p>
+            <p>
+                <strong>Recomendaciones:</strong>
+                <ul>
+                    <li>Asegúrate de que la URL sea válida y esté activa.</li>
+                    <li>Evita URLs demasiado largas, ya que pueden generar códigos QR más complejos y difíciles de escanear.</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
